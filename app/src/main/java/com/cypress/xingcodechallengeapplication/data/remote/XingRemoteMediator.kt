@@ -11,6 +11,7 @@ import com.cypress.xingcodechallengeapplication.data.local.XingEntity
 import com.cypress.xingcodechallengeapplication.data.local.XingKeyEntity
 import com.cypress.xingcodechallengeapplication.data.mapper.toEntity
 import com.cypress.xingcodechallengeapplication.data.remote.XingClientApi.Companion.PAGE_SIZE
+import kotlinx.coroutines.delay
 import java.io.IOException
 
 @OptIn(ExperimentalPagingApi::class)
@@ -35,13 +36,9 @@ class XingRemoteMediator(
                     return MediatorResult.Success(endOfPaginationReached = true)
                 }
                 LoadType.APPEND -> {
-                    val lastItem = state.lastItemOrNull()
-                    if (lastItem == null) {
-                        return MediatorResult.Success(endOfPaginationReached = true)
-                    }
-
-                    val xingKeyEntity = xingDataBase.xingKeyDao.getPage(lastItem.id)
-                    val tempKey = xingKeyEntity?.nextKey ?: return MediatorResult.Success(endOfPaginationReached = true)
+                    val remoteKeys = xingDataBase.xingKeyDao.getLastRemoteKey()
+                    val tempKey = remoteKeys?.nextKey
+                        ?: return MediatorResult.Success(endOfPaginationReached = true)
                     tempKey
                 }
             }
@@ -67,7 +64,6 @@ class XingRemoteMediator(
                         )
                     }
                 )
-
             }
 
             return MediatorResult.Success(endOfPaginationReached = (result.size < PAGE_SIZE))

@@ -16,4 +16,6 @@ interface XingKeyDao {
     @Query("DELETE FROM xing_key_table")
     suspend fun clearAll()
 
+    @Query("SELECT * FROM xing_key_table ORDER BY repoId DESC LIMIT 1")
+    suspend fun getLastRemoteKey(): XingKeyEntity?
 }

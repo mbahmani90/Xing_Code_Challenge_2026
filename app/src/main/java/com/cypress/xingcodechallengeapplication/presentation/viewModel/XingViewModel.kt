@@ -8,6 +8,7 @@ import com.cypress.xingcodechallengeapplication.data.repository.XingRepository
 import com.cypress.xingcodechallengeapplication.domain.mappers.toXingDetailsModel
 import com.cypress.xingcodechallengeapplication.domain.mappers.toXingModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
@@ -17,7 +18,7 @@ class XingViewModel(
     private val xingRepository: XingRepository
 ) : ViewModel() {
 
-    private var triggerRefresh = MutableStateFlow(Unit)
+    private val triggerRefresh = MutableSharedFlow<Unit>(replay = 1)
 
     val xingFlow = triggerRefresh.flatMapLatest {
         xingRepository
@@ -28,8 +29,12 @@ class XingViewModel(
             }
     }.cachedIn(viewModelScope)
 
-    fun getXingItems(){
-        triggerRefresh.value = Unit
+    init {
+        triggerRefresh.tryEmit(Unit)
+    }
+
+    fun getXingItems() {
+        triggerRefresh.tryEmit(Unit)
     }
 
 }
