@@ -41,8 +41,7 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
 
                 Box(
-                    modifier = Modifier
-                        .fillMaxSize()
+                    modifier = Modifier.fillMaxSize()
                 ) {
 
                     NavHost(
@@ -59,7 +58,7 @@ class MainActivity : ComponentActivity() {
                             arguments = listOf(navArgument(ID_ARG) { type = NavType.LongType })
                         ) { backStackEntry ->
                             val id = backStackEntry.arguments?.getLong(ID_ARG) ?: 0L
-                            XingDetailsRoute(id = id)
+                            XingDetailsRoute(navController , id = id)
                         }
                     }
                 }

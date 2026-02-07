@@ -2,10 +2,8 @@ package com.cypress.xingcodechallengeapplication.domain.mappers
 
 import com.cypress.xingcodechallengeapplication.data.local.XingEntity
 import com.cypress.xingcodechallengeapplication.domain.XingDetailsModel
-import com.cypress.xingcodechallengeapplication.domain.XingRepoModel
-import kotlin.Long
 
-fun XingEntity.toXingModel() : XingDetailsModel{
+fun XingEntity.toXingDetailsModel() : XingDetailsModel{
 
     return XingDetailsModel(
         id = id,

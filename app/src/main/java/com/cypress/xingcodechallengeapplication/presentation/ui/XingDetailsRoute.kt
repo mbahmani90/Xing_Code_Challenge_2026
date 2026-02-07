@@ -13,9 +13,10 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -30,25 +31,29 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import com.cypress.xingcodechallengeapplication.data.local.XingEntity
+import androidx.navigation.NavController
+import com.cypress.xingcodechallengeapplication.domain.XingDetailsModel
 import com.cypress.xingcodechallengeapplication.presentation.viewModel.XingDetailsViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 
 @Composable
-fun XingDetailsRoute(id: Long) {
+fun XingDetailsRoute(navController: NavController, id: Long) {
     val viewModel: XingDetailsViewModel = koinViewModel()
     val item by viewModel.getItem(id).collectAsState(initial = null)
 
-    XingDetailsScreen(item)
+    XingDetailsScreen(
+        repo = item ,
+        onBackClick = { navController.popBackStack() })
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun XingDetailsScreen(
-    repo: XingEntity?,
+    repo: XingDetailsModel?,
     onBackClick: () -> Unit = {}
 ) {
     Scaffold(
@@ -75,40 +80,88 @@ fun XingDetailsScreen(
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
             } else {
 
-                Text(
-                    text = "Owner: ${repo.ownerLogin}",
-                    style = MaterialTheme.typography.labelLarge,
-                    color = MaterialTheme.colorScheme.secondary
-                )
-
-                HorizontalDivider()
-
-                Text(
-                    text = repo.description ?: "No description provided for this repository.",
-                    style = MaterialTheme.typography.bodyLarge
-                )
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                    shape = MaterialTheme.shapes.medium,
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color.White
+                    ),
+                    elevation = CardDefaults.cardElevation(8.dp)
                 ) {
-                    InfoChip(label = "Stars", value = repo.stars.toString(), icon = Icons.Default.Star)
-                    InfoChip(label = "Forks", value = repo.forks.toString(), icon = Icons.Default.Share)
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        // Owner
+                        Text(
+                            text = "Owner: ${repo.ownerLogin}",
+                            style = MaterialTheme.typography.labelLarge,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+
+                        HorizontalDivider(color = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f))
+
+                        // Description
+                        Text(
+                            text = repo.description ?: "No description provided for this repository.",
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+
+                        // Stars & Forks row
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            InfoChip(
+                                label = "Stars",
+                                value = repo.stars.toString(),
+                                icon = Icons.Default.Star,
+                                labelColor = MaterialTheme.colorScheme.secondary,
+                                valueColor = MaterialTheme.colorScheme.onSecondaryContainer
+                            )
+                            InfoChip(
+                                label = "Forks",
+                                value = repo.forks.toString(),
+                                icon = Icons.Default.Share,
+                                labelColor = MaterialTheme.colorScheme.secondary,
+                                valueColor = MaterialTheme.colorScheme.onSecondaryContainer
+                            )
+                        }
+
+                        // Language
+                        repo.language?.let {
+                            Text(
+                                text = "Language: $it",
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.tertiary
+                            )
+                        }
+                    }
                 }
 
-                repo.language?.let {
-                    Text(text = "Language: $it", style = MaterialTheme.typography.bodyMedium)
-                }
+
             }
         }
     }
 }
 
 @Composable
-fun InfoChip(label: String, value: String, icon: ImageVector) {
+fun InfoChip(
+    label: String,
+    value: String,
+    icon: ImageVector,
+    labelColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
+    valueColor: Color = MaterialTheme.colorScheme.onSurface
+) {
     Row(verticalAlignment = Alignment.CenterVertically) {
-        Icon(icon, contentDescription = null, modifier = Modifier.size(18.dp))
+        Icon(icon, contentDescription = null, modifier = Modifier.size(18.dp), tint = labelColor)
         Spacer(Modifier.width(4.dp))
-        Text(text = "$label: $value", style = MaterialTheme.typography.bodySmall)
+        Text(text = "$label: ", style = MaterialTheme.typography.bodySmall, color = labelColor)
+        Text(text = value, style = MaterialTheme.typography.bodySmall, color = valueColor)
     }
 }

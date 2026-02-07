@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import androidx.paging.map
 import com.cypress.xingcodechallengeapplication.data.repository.XingRepository
+import com.cypress.xingcodechallengeapplication.domain.mappers.toXingDetailsModel
 import com.cypress.xingcodechallengeapplication.domain.mappers.toXingModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
