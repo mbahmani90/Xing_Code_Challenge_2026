@@ -7,10 +7,10 @@ import retrofit2.http.Query
 interface XingClientApi {
 
     @GET("orgs/xing/repos")
-    suspend fun getRepositories(
+    suspend fun getRepo(
         @Query("page")page: Int = 1,
         @Query("per_page")pageSize: Int = PAGE_SIZE
-    ) : XingDto
+    ) : List<XingDto>
 
     companion object{
         const val BASE_URL = "https://api.github.com/"
