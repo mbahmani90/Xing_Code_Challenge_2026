@@ -1,5 +1,8 @@
 package com.cypress.xingcodechallengeapplication.data.remote.dto
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Permissions(
     val admin: Boolean,
     val maintain: Boolean,

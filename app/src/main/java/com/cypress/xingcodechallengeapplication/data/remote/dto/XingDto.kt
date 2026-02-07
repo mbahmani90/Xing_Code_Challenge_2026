@@ -1,5 +1,8 @@
 package com.cypress.xingcodechallengeapplication.data.remote.dto
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class XingDto(
     val allow_forking: Boolean,
     val archive_url: String,
@@ -15,10 +18,10 @@ data class XingDto(
     val contents_url: String,
     val contributors_url: String,
     val created_at: String,
-    val custom_properties: CustomProperties,
+//    val custom_properties: CustomProperties,
     val default_branch: String,
     val deployments_url: String,
-    val description: String,
+    val description: String? = null,
     val disabled: Boolean,
     val downloads_url: String,
     val events_url: String,
@@ -37,7 +40,7 @@ data class XingDto(
     val has_pages: Boolean,
     val has_projects: Boolean,
     val has_wiki: Boolean,
-    val homepage: String,
+//    val homepage: String,
     val hooks_url: String,
     val html_url: String,
     val id: Int,
@@ -47,12 +50,12 @@ data class XingDto(
     val issues_url: String,
     val keys_url: String,
     val labels_url: String,
-    val language: String,
+    val language: String? = null,
     val languages_url: String,
-    val license: License,
+//    val license: License,
     val merges_url: String,
     val milestones_url: String,
-    val mirror_url: Any,
+//    val mirror_url: Any,
     val name: String,
     val node_id: String,
     val notifications_url: String,
@@ -74,7 +77,7 @@ data class XingDto(
     val svn_url: String,
     val tags_url: String,
     val teams_url: String,
-    val topics: List<Any>,
+//    val topics: List<Any>,
     val trees_url: String,
     val updated_at: String,
     val url: String,

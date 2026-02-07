@@ -1,5 +1,6 @@
 package com.cypress.xingcodechallengeapplication.data.remote
 
+import com.cypress.xingcodechallengeapplication.BuildConfig
 import com.cypress.xingcodechallengeapplication.data.remote.dto.XingDto
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -14,6 +15,7 @@ interface XingClientApi {
 
     companion object{
         const val BASE_URL = "https://api.github.com/"
+        const val GITHUB_TOKEN = BuildConfig.XING_TOKEN
         const val PAGE_SIZE = 20
     }
 

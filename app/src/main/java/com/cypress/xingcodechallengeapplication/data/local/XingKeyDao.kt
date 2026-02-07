@@ -11,7 +11,7 @@ interface XingKeyDao {
     suspend fun upsert(list : List<XingKeyEntity>)
 
     @Query("SELECT * FROM xing_key_table WHERE repoId = :repoId")
-    suspend fun getPage(repoId : Int) : XingKeyEntity
+    suspend fun getPage(repoId : Int) : XingKeyEntity?
 
     @Query("DELETE FROM xing_key_table")
     suspend fun clearAll()

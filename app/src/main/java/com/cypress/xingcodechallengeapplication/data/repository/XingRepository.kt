@@ -24,7 +24,12 @@ class XingRepositoryImp(
     override fun getXingPager(): Pager<Int, XingEntity> {
 
         return Pager(
-            config = PagingConfig(pageSize = PAGE_SIZE),
+            config = PagingConfig(
+                pageSize = PAGE_SIZE,
+                initialLoadSize = PAGE_SIZE,
+                prefetchDistance = PAGE_SIZE / 2,
+                enablePlaceholders = false
+            ),
             remoteMediator = XingRemoteMediator(
                 xingClientApi , xingDataBase
             ),
