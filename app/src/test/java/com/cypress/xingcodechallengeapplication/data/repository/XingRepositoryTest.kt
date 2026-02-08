@@ -1,8 +1,5 @@
 package com.cypress.xingcodechallengeapplication.data.repository
 
-import androidx.paging.ExperimentalPagingApi
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.cypress.xingcodechallengeapplication.data.local.XingDao
@@ -12,7 +9,6 @@ import com.cypress.xingcodechallengeapplication.data.remote.XingClientApi
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import kotlin.test.Test
