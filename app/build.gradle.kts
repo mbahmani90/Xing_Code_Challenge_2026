@@ -138,4 +138,8 @@ dependencies {
     // Roboelctric
     testImplementation("org.robolectric:robolectric:4.16.1")
 
+    // Mockk
+    testImplementation("io.mockk:mockk:1.14.9")
+    androidTestImplementation("io.mockk:mockk-android:1.14.9")
+
 }

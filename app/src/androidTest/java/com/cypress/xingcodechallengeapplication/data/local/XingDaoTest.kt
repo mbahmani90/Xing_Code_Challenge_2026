@@ -38,7 +38,7 @@ class XingDaoTest {
             false,
             1,
             2,
-            "English",
+            "cpp",
             "xing_owner",
             ""
         )
