@@ -72,6 +72,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.foundation.layout)
+    implementation(libs.androidx.junit.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -121,5 +122,20 @@ dependencies {
 
     // SwipeRefresh
     implementation("androidx.compose.material3:material3:1.4.0")
+
+    // Test
+    androidTestImplementation("androidx.test.ext:junit:1.3.0")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.7.0")
+    androidTestImplementation("androidx.test.ext:junit-ktx:1.3.0")
+    testImplementation(kotlin("test"))
+
+    // MockWebServer
+    testImplementation("com.squareup.okhttp3:mockwebserver:5.3.2")
+
+    // runTest
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
+
+    // Roboelctric
+    testImplementation("org.robolectric:robolectric:4.16.1")
 
 }
