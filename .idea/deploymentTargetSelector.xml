@@ -5,9 +5,6 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="xingRepoScreen_displaysItems()">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
       <SelectionState runConfigName="xingDetailsScreen_displaysRepoData()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
