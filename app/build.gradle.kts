@@ -82,67 +82,67 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     // Coil Compose
-    implementation("io.coil-kt:coil-compose:2.2.2")
+    implementation(libs.coil.compose)
 
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.10.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.10.0")
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 
     // Paging
-    implementation("androidx.paging:paging-runtime-ktx:3.4.0")
-    implementation("androidx.paging:paging-compose:3.4.0")
+    implementation(libs.androidx.paging.runtime.ktx)
+    implementation(libs.androidx.paging.compose)
 
     // Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation(libs.retrofit)
     // Moshi
-    implementation("com.squareup.retrofit2:converter-moshi:3.0.0")
+    implementation(libs.converter.moshi)
     // Interceptor
-    implementation("com.squareup.okhttp3:logging-interceptor:5.3.2")
+    implementation(libs.logging.interceptor)
 
     // Kotlinx-Serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.10.0")
-    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
 
     // Room
-    implementation( "androidx.room:room-ktx:2.8.4")
+    implementation( libs.androidx.room.ktx)
     kapt("androidx.room:room-compiler:2.8.4")
-    implementation("androidx.room:room-paging:2.8.4")
+    implementation(libs.androidx.room.paging)
 
     // Koin
-    implementation("io.insert-koin:koin-core:4.1.1")
-    implementation("io.insert-koin:koin-android:4.1.1")
-    implementation("io.insert-koin:koin-androidx-compose:4.1.1")
-    implementation("io.insert-koin:koin-android:4.1.1")
-    implementation("io.insert-koin:koin-androidx-compose:4.1.1")
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
 
     //Navigation Control
-    implementation("androidx.navigation:navigation-compose:2.9.7")
+    implementation(libs.androidx.navigation.compose)
 
     // Icons
-    implementation("androidx.compose.material:material-icons-extended")
+    implementation(libs.androidx.material.icons.extended)
 
     // SwipeRefresh
-    implementation("androidx.compose.material3:material3:1.4.0")
+    implementation(libs.material3)
 
     // Test
-    androidTestImplementation("androidx.test.ext:junit:1.3.0")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.7.0")
-    androidTestImplementation("androidx.test.ext:junit-ktx:1.3.0")
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.junit.ktx)
     testImplementation(kotlin("test"))
 
     // MockWebServer
-    testImplementation("com.squareup.okhttp3:mockwebserver:5.3.2")
+    testImplementation(libs.mockwebserver)
 
     // runTest
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
+    testImplementation(libs.kotlinx.coroutines.test)
 
     // Roboelctric
-    testImplementation("org.robolectric:robolectric:4.16.1")
+    testImplementation(libs.robolectric)
 
     // Mockk
-    testImplementation("io.mockk:mockk:1.14.9")
-    androidTestImplementation("io.mockk:mockk-android:1.14.9")
-    testImplementation("androidx.paging:paging-common-ktx:3.4.0")
-    androidTestImplementation("app.cash.turbine:turbine:1.2.1")
-    androidTestImplementation("androidx.navigation:navigation-testing:2.9.7")
+    testImplementation(libs.mockk)
+    androidTestImplementation(libs.mockk.android)
+    testImplementation(libs.androidx.paging.common.ktx)
+    androidTestImplementation(libs.turbine)
+    androidTestImplementation(libs.androidx.navigation.testing)
 
 }
