@@ -37,3 +37,10 @@ In the application, the data is fetched from a remote API and displayed in a scr
 - **Testing:**
   - Unit tests: MockWebServer, mockk, AsyncPagingDataDiffer
   - UI tests: Jetpack Compose testing
+
+## ScreenShot
+
+<p float="left">
+  <img src="RepoList.jpg" alt="Repo List Screen" width="300" />
+  <img src="ItemDetails.jpg" alt="Item Details Screen" width="300" />
+</p>
