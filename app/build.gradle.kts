@@ -143,5 +143,6 @@ dependencies {
     androidTestImplementation("io.mockk:mockk-android:1.14.9")
     testImplementation("androidx.paging:paging-common-ktx:3.4.0")
     androidTestImplementation("app.cash.turbine:turbine:1.2.1")
+    androidTestImplementation("androidx.navigation:navigation-testing:2.9.7")
 
 }

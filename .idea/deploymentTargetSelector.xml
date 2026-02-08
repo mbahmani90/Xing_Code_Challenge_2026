@@ -5,7 +5,16 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="load_success()">
+      <SelectionState runConfigName="xingRepoScreen_displaysItems()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="xingDetailsScreen_displaysRepoData()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="xingDetailsScreen_showsLoading_whenRepoIsNull()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="xingDetailsScreen_backButton_callsOnBackClick()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

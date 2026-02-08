@@ -33,6 +33,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.cypress.xingcodechallengeapplication.domain.XingDetailsModel
@@ -77,7 +78,10 @@ fun XingDetailsScreen(
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             if (repo == null) {
-                CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .testTag("LoadingIndicator"))
             } else {
 
                 Card(
@@ -96,7 +100,7 @@ fun XingDetailsScreen(
                             .padding(16.dp),
                         verticalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
-                        // Owner
+
                         Text(
                             text = "Owner: ${repo.ownerLogin}",
                             style = MaterialTheme.typography.labelLarge,
@@ -112,7 +116,6 @@ fun XingDetailsScreen(
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
 
-                        // Stars & Forks row
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween
@@ -133,7 +136,6 @@ fun XingDetailsScreen(
                             )
                         }
 
-                        // Language
                         repo.language?.let {
                             Text(
                                 text = "Language: $it",
